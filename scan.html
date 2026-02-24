@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扫码充电 - 电动车充电助手</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <button class="back-btn" onclick="window.location.href='index.html'">← 返回</button>
+                <h1>扫码充电</h1>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="scan-container">
+                <div id="reader" class="qr-reader"></div>
+                <div class="scan-tips">
+                    <p>📱 将摄像头对准充电桩二维码</p>
+                    <p>💡 确保光线充足，二维码清晰可见</p>
+                </div>
+
+                <div class="scan-buttons">
+                    <button id="startScanBtn" class="btn btn-primary" onclick="startScan()">开始扫码</button>
+                    <button id="stopScanBtn" class="btn btn-secondary" onclick="stopScan()" style="display: none;">停止扫码</button>
+                </div>
+
+                <div class="manual-input">
+                    <p>或手动输入充电桩编号：</p>
+                    <div class="input-group">
+                        <input type="text" id="stationIdInput" placeholder="请输入充电桩编号">
+                        <button class="btn btn-primary" onclick="manualInput()">确认</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">首页</span>
+            </a>
+            <a href="stations.html" class="nav-item">
+                <span class="nav-icon">🗺️</span>
+                <span class="nav-text">电站</span>
+            </a>
+            <a href="orders.html" class="nav-item">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">订单</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">我的</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script src="data/mock-data.js"></script>
+    <script src="js/scan.js"></script>
+</body>
+</html>

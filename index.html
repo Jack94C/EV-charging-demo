@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电动车充电助手</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <h1>⚡ 电动车充电助手</h1>
+                <div class="user-info">
+                    <span id="userName">用户</span>
+                    <img src="https://via.placeholder.com/40" alt="头像" id="userAvatar" class="avatar">
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="quick-actions">
+                <div class="action-card" onclick="window.location.href='scan.html'">
+                    <div class="action-icon">📷</div>
+                    <h3>扫码充电</h3>
+                    <p>扫描充电桩二维码开始充电</p>
+                </div>
+
+                <div class="action-card" onclick="window.location.href='stations.html'">
+                    <div class="action-icon">🗺️</div>
+                    <h3>附近电站</h3>
+                    <p>查找附近的充电桩</p>
+                </div>
+
+                <div class="action-card" onclick="window.location.href='orders.html'">
+                    <div class="action-icon">📋</div>
+                    <h3>我的订单</h3>
+                    <p>查看充电历史记录</p>
+                </div>
+
+                <div class="action-card" onclick="window.location.href='profile.html'">
+                    <div class="action-icon">👤</div>
+                    <h3>个人中心</h3>
+                    <p>管理个人信息和设置</p>
+                </div>
+            </div>
+
+            <div class="recent-section">
+                <h2>最近订单</h2>
+                <div id="recentOrders" class="order-list">
+                </div>
+            </div>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item active">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">首页</span>
+            </a>
+            <a href="stations.html" class="nav-item">
+                <span class="nav-icon">🗺️</span>
+                <span class="nav-text">电站</span>
+            </a>
+            <a href="orders.html" class="nav-item">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">订单</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">我的</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="data/mock-data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

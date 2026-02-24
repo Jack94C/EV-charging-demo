@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的订单 - 电动车充电助手</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <h1>我的订单</h1>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="orders-container">
+                <div class="search-bar">
+                    <input type="text" id="orderSearchInput" placeholder="搜索订单号或充电站" oninput="searchOrders()">
+                </div>
+
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all" onclick="filterOrders('all')">全部</button>
+                    <button class="filter-tab" data-filter="completed" onclick="filterOrders('completed')">已完成</button>
+                    <button class="filter-tab" data-filter="charging" onclick="filterOrders('charging')">充电中</button>
+                    <button class="filter-tab" data-filter="cancelled" onclick="filterOrders('cancelled')">已取消</button>
+                </div>
+
+                <div class="orders-list" id="ordersList">
+                </div>
+            </div>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">首页</span>
+            </a>
+            <a href="stations.html" class="nav-item">
+                <span class="nav-icon">🗺️</span>
+                <span class="nav-text">电站</span>
+            </a>
+            <a href="orders.html" class="nav-item active">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">订单</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">我的</span>
+            </a>
+        </nav>
+    </div>
+
+    <div id="orderDetailModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>订单详情</h2>
+                <button class="close-btn" onclick="closeOrderDetail()">×</button>
+            </div>
+            <div class="modal-body" id="orderDetailBody">
+            </div>
+        </div>
+    </div>
+
+    <script src="data/mock-data.js"></script>
+    <script src="js/orders.js"></script>
+</body>
+</html>

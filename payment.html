@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支付确认 - 电动车充电助手</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <button class="back-btn" onclick="window.location.href='index.html'">← 返回</button>
+                <h1>支付确认</h1>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="payment-container">
+                <div class="station-info-card">
+                    <h3>充电桩信息</h3>
+                    <div class="info-row">
+                        <span>充电桩编号：</span>
+                        <span id="stationId">--</span>
+                    </div>
+                    <div class="info-row">
+                        <span>充电桩名称：</span>
+                        <span id="stationName">--</span>
+                    </div>
+                    <div class="info-row">
+                        <span>位置：</span>
+                        <span id="stationAddress">--</span>
+                    </div>
+                    <div class="info-row">
+                        <span>单价：</span>
+                        <span id="price">--</span>
+                    </div>
+                </div>
+
+                <div class="payment-amount-card">
+                    <h3>支付金额</h3>
+                    <div class="amount-display">
+                        <span class="currency">¥</span>
+                        <span class="amount" id="paymentAmount">50.00</span>
+                    </div>
+                    <p class="amount-tip">预充值金额，实际按充电量结算</p>
+                </div>
+
+                <div class="payment-method-card">
+                    <h3>支付方式</h3>
+                    <div class="payment-methods">
+                        <label class="payment-method selected">
+                            <input type="radio" name="paymentMethod" value="wechat" checked>
+                            <span class="method-icon">💚</span>
+                            <span class="method-name">微信支付</span>
+                            <span class="check-icon">✓</span>
+                        </label>
+                        <label class="payment-method">
+                            <input type="radio" name="paymentMethod" value="alipay">
+                            <span class="method-icon">💙</span>
+                            <span class="method-name">支付宝</span>
+                            <span class="check-icon">✓</span>
+                        </label>
+                        <label class="payment-method">
+                            <input type="radio" name="paymentMethod" value="balance">
+                            <span class="method-icon">💰</span>
+                            <span class="method-name">余额支付</span>
+                            <span class="check-icon">✓</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button id="payButton" class="btn btn-primary btn-large" onclick="confirmPayment()">
+                    确认支付 ¥50.00
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script src="data/mock-data.js"></script>
+    <script src="js/payment.js"></script>
+</body>
+</html>

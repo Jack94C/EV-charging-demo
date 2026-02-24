@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心 - 电动车充电助手</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <h1>个人中心</h1>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="profile-container">
+                <div class="user-card">
+                    <div class="user-avatar">
+                        <img src="https://via.placeholder.com/80" alt="头像" id="profileAvatar">
+                        <button class="edit-avatar-btn" onclick="editAvatar()">更换</button>
+                    </div>
+                    <div class="user-details">
+                        <h2 id="profileName">用户</h2>
+                        <p id="profilePhone">138****8888</p>
+                        <p id="profileEmail">user@example.com</p>
+                    </div>
+                    <button class="btn btn-secondary btn-small" onclick="editProfile()">编辑资料</button>
+                </div>
+
+                <div class="stats-card">
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalOrders">0</div>
+                        <div class="stat-label">总订单数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalEnergy">0</div>
+                        <div class="stat-label">总充电量(kWh)</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalAmount">¥0</div>
+                        <div class="stat-label">总消费</div>
+                    </div>
+                </div>
+
+                <div class="menu-list">
+                    <div class="menu-item" onclick="showBalance()">
+                        <span class="menu-icon">💰</span>
+                        <span class="menu-text">我的余额</span>
+                        <span class="menu-arrow">→</span>
+                    </div>
+                    <div class="menu-item" onclick="showCoupons()">
+                        <span class="menu-icon">🎫</span>
+                        <span class="menu-text">优惠券</span>
+                        <span class="menu-arrow">→</span>
+                    </div>
+                    <div class="menu-item" onclick="showVehicles()">
+                        <span class="menu-icon">🚗</span>
+                        <span class="menu-text">我的车辆</span>
+                        <span class="menu-arrow">→</span>
+                    </div>
+                    <div class="menu-item" onclick="showSettings()">
+                        <span class="menu-icon">⚙️</span>
+                        <span class="menu-text">设置</span>
+                        <span class="menu-arrow">→</span>
+                    </div>
+                    <div class="menu-item" onclick="showHelp()">
+                        <span class="menu-icon">❓</span>
+                        <span class="menu-text">帮助中心</span>
+                        <span class="menu-arrow">→</span>
+                    </div>
+                    <div class="menu-item" onclick="showAbout()">
+                        <span class="menu-icon">ℹ️</span>
+                        <span class="menu-text">关于我们</span>
+                        <span class="menu-arrow">→</span>
+                    </div>
+                </div>
+
+                <button class="btn btn-danger btn-large" onclick="logout()">退出登录</button>
+            </div>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">首页</span>
+            </a>
+            <a href="stations.html" class="nav-item">
+                <span class="nav-icon">🗺️</span>
+                <span class="nav-text">电站</span>
+            </a>
+            <a href="orders.html" class="nav-item">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">订单</span>
+            </a>
+            <a href="profile.html" class="nav-item active">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">我的</span>
+            </a>
+        </nav>
+    </div>
+
+    <div id="profileEditModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>编辑资料</h2>
+                <button class="close-btn" onclick="closeProfileEdit()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>昵称</label>
+                    <input type="text" id="editName" placeholder="请输入昵称">
+                </div>
+                <div class="form-group">
+                    <label>手机号</label>
+                    <input type="tel" id="editPhone" placeholder="请输入手机号">
+                </div>
+                <div class="form-group">
+                    <label>邮箱</label>
+                    <input type="email" id="editEmail" placeholder="请输入邮箱">
+                </div>
+                <button class="btn btn-primary" onclick="saveProfile()">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data/mock-data.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>充电中 - 电动车充电助手</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <h1>充电中</h1>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="charging-status-container">
+                <div class="charging-animation">
+                    <div class="charging-circle">
+                        <div class="charging-icon">⚡</div>
+                    </div>
+                </div>
+
+                <div class="charging-info">
+                    <div class="info-item">
+                        <span class="label">充电桩编号</span>
+                        <span class="value" id="chargingStationId">--</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">充电时长</span>
+                        <span class="value" id="chargingDuration">00:00:00</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">已充电量</span>
+                        <span class="value" id="chargingEnergy">0.00 kWh</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">当前费用</span>
+                        <span class="value" id="chargingAmount">¥0.00</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">预计完成</span>
+                        <span class="value" id="estimatedTime">--:--</span>
+                    </div>
+                </div>
+
+                <div class="charging-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span id="progressPercent">0%</span>
+                        <span>目标: 50 kWh</span>
+                    </div>
+                </div>
+
+                <div class="charging-actions">
+                    <button class="btn btn-secondary" onclick="pauseCharging()">暂停充电</button>
+                    <button class="btn btn-danger" onclick="stopCharging()">结束充电</button>
+                </div>
+            </div>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">首页</span>
+            </a>
+            <a href="stations.html" class="nav-item">
+                <span class="nav-icon">🗺️</span>
+                <span class="nav-text">电站</span>
+            </a>
+            <a href="orders.html" class="nav-item">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">订单</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">我的</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="data/mock-data.js"></script>
+    <script src="js/charging.js"></script>
+</body>
+</html>
