@@ -59,6 +59,15 @@
     </div>
 
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script>
+        console.log('检查 Html5Qrcode 是否加载:', typeof Html5Qrcode);
+        if (typeof Html5Qrcode === 'undefined') {
+            console.error('Html5Qrcode 库加载失败！');
+            alert('扫码库加载失败，请检查网络连接或刷新页面');
+        } else {
+            console.log('Html5Qrcode 库加载成功');
+        }
+    </script>
     <script src="data/mock-data.js"></script>
     <script src="js/scan.js"></script>
 </body>

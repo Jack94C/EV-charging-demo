@@ -16,14 +16,14 @@ const mockOrders = [
         stationId: 'B0FFI0YO72',
         stationName: '国家电网充电站(怀柔区长哨营政府)',
         stationAddress: '长哨营政府内地面停车场',
-        startTime: '2024-01-15 14:30:00',
-        endTime: '2024-01-15 16:45:00',
+        startTime: '2026-01-15 14:30:00',
+        endTime: '2026-01-15 16:45:00',
         duration: 135,
         energy: 25.5,
         amount: 30.60,
         status: 'completed',
         paymentStatus: 'paid',
-        createdAt: '2024-01-15 14:30:00'
+        createdAt: '2026-01-15 14:30:00'
     },
     {
         id: '20261161002',
@@ -31,14 +31,14 @@ const mockOrders = [
         stationId: 'B0IUYLJ2VO',
         stationName: '国家电网汽车充电站(北京市怀柔区喇叭沟原始森林风景区)',
         stationAddress: '高寒植物园停车场',
-        startTime: '2024-01-14 09:00:00',
-        endTime: '2024-01-14 11:30:00',
+        startTime: '2026-01-14 09:00:00',
+        endTime: '2026-01-14 11:30:00',
         duration: 150,
         energy: 32.0,
         amount: 41.60,
         status: 'completed',
         paymentStatus: 'paid',
-        createdAt: '2024-01-14 09:00:00'
+        createdAt: '2026-01-14 09:00:00'
     },
     {
         id: '20261161003',
@@ -46,14 +46,14 @@ const mockOrders = [
         stationId: 'B0FFI0YO74',
         stationName: '国家电网汽车充电站(北京市怀柔区中榆店村)',
         stationAddress: '017县道北50米停车场(中榆树店村)',
-        startTime: '2024-01-13 18:00:00',
+        startTime: '2026-01-13 18:00:00',
         endTime: null,
         duration: 0,
         energy: 0,
         amount: 0,
         status: 'cancelled',
         paymentStatus: 'unpaid',
-        createdAt: '2024-01-13 18:00:00'
+        createdAt: '2026-01-13 18:00:00'
     },
     {
         id: '20261161004',
@@ -61,14 +61,14 @@ const mockOrders = [
         stationId: 'B0HK3UQ5Q7',
         stationName: '国家电网汽车充电站(北京市怀柔区汤河口)',
         stationAddress: '汤河口供电所',
-        startTime: '2024-01-12 10:15:00',
-        endTime: '2024-01-12 12:00:00',
+        startTime: '2026-01-12 10:15:00',
+        endTime: '2026-01-12 12:00:00',
         duration: 105,
         energy: 18.5,
         amount: 27.75,
         status: 'completed',
         paymentStatus: 'paid',
-        createdAt: '2024-01-12 10:15:00'
+        createdAt: '2026-01-12 10:15:00'
     },
     {
         id: '20261161005',
@@ -76,14 +76,14 @@ const mockOrders = [
         stationId: 'B0FFHJJ4VM',
         stationName: '特来电汽车充电站(特来电北京大石窑农家院充电站)',
         stationAddress: '琉璃庙镇狼虎哨村村委会东1000米',
-        startTime: '2024-01-11 15:30:00',
-        endTime: '2024-01-11 17:00:00',
+        startTime: '2026-01-11 15:30:00',
+        endTime: '2026-01-11 17:00:00',
         duration: 90,
         energy: 15.0,
         amount: 21.00,
         status: 'completed',
         paymentStatus: 'paid',
-        createdAt: '2024-01-11 15:30:00'
+        createdAt: '2026-01-11 15:30:00'
     }
 ];
 
@@ -112,13 +112,32 @@ const currentChargingSession = {
 let allStations = [];
 
 async function initStations() {
+    console.log('initStations: 开始初始化充电桩数据');
+    console.log('initStations: 当前 mockStations.length =', mockStations.length);
+    
     if (allStations.length === 0) {
-        allStations = await loadCSVData();
-        if (allStations.length > 0) {
-            mockStations.length = 0;
-            mockStations.push(...allStations.slice(0, 50));
+        console.log('initStations: allStations 为空，尝试加载 CSV 数据');
+        try {
+            allStations = await loadCSVData();
+            console.log('initStations: CSV 数据加载完成，数量:', allStations.length);
+            
+            if (allStations.length > 0) {
+                mockStations.length = 0;
+                mockStations.push(...allStations.slice(0, 50));
+                console.log('initStations: 已添加到 mockStations，数量:', mockStations.length);
+            } else {
+                console.log('initStations: CSV 数据为空');
+            }
+        } catch (error) {
+            console.error('initStations: 加载 CSV 数据失败:', error);
+            console.log('initStations: 将使用空数组，由调用方添加默认数据');
+            allStations = [];
         }
+    } else {
+        console.log('initStations: allStations 已有数据，数量:', allStations.length);
     }
+    
+    console.log('initStations: 返回 mockStations，数量:', mockStations.length);
     return mockStations;
 }
 

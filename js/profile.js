@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     loadUserInfo();
     loadStats();
+    initCustomAlert();
 });
 
 function loadUserInfo() {
@@ -127,10 +128,6 @@ function showVehicles() {
     alert('我的车辆功能待开发');
 }
 
-function showSettings() {
-    alert('设置功能待开发');
-}
-
 function showHelp() {
     alert('帮助中心\n\n常见问题：\n1. 如何开始充电？\n   点击"扫码充电"或选择附近电站\n\n2. 如何支付？\n   支持微信、支付宝、余额支付\n\n3. 充电费用如何计算？\n   按实际充电量 × 单价计算\n\n4. 如何联系客服？\n   客服电话: 400-123-4567');
 }
@@ -142,7 +139,42 @@ function showAbout() {
 function logout() {
     if (confirm('确定要退出登录吗？')) {
         localStorage.clear();
-        alert('已退出登录');
+        showCustomAlert('已退出登录');
         window.location.href = 'index.html';
     }
+}
+
+function showSettings() {
+    const modal = document.getElementById('settingsModal');
+    modal.classList.add('active');
+}
+
+function closeSettings() {
+    const modal = document.getElementById('settingsModal');
+    modal.classList.remove('active');
+}
+
+function saveSettings() {
+    const notificationEnabled = document.getElementById('notificationSwitch').checked;
+    const soundEnabled = document.getElementById('soundSwitch').checked;
+    const autoRefreshEnabled = document.getElementById('autoRefreshSwitch').checked;
+    const darkModeEnabled = document.getElementById('darkModeSwitch').checked;
+    
+    const settings = {
+        notificationEnabled,
+        soundEnabled,
+        autoRefreshEnabled,
+        darkModeEnabled
+    };
+    
+    localStorage.setItem('appSettings', JSON.stringify(settings));
+    
+    if (darkModeEnabled) {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
+    
+    closeSettings();
+    showCustomAlert('设置已保存');
 }

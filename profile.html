@@ -125,6 +125,54 @@
         </div>
     </div>
 
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>设置</h2>
+                <button class="close-btn" onclick="closeSettings()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-item">
+                    <label class="setting-label">消息通知</label>
+                    <div class="setting-switch">
+                        <label class="switch">
+                            <input type="checkbox" id="notificationSwitch" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <label class="setting-label">声音提醒</label>
+                    <div class="setting-switch">
+                        <label class="switch">
+                            <input type="checkbox" id="soundSwitch" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <label class="setting-label">自动刷新</label>
+                    <div class="setting-switch">
+                        <label class="switch">
+                            <input type="checkbox" id="autoRefreshSwitch" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <label class="setting-label">深色模式</label>
+                    <div class="setting-switch">
+                        <label class="switch">
+                            <input type="checkbox" id="darkModeSwitch">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="saveSettings()">保存设置</button>
+            </div>
+        </div>
+    </div>
+
     <script src="data/mock-data.js"></script>
     <script src="js/profile.js"></script>
 </body>

@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     loadUserInfo();
     loadRecentOrders();
+    initCustomAlert();
 });
 
 function loadUserInfo() {
@@ -49,4 +50,37 @@ function getStatusText(status) {
 
 function viewOrderDetail(orderId) {
     window.location.href = `orders.html?orderId=${orderId}`;
+}
+
+function initCustomAlert() {
+    if (!document.getElementById('customAlert')) {
+        const alertHtml = `
+            <div id="customAlert" class="custom-alert">
+                <div class="alert-content">
+                    <div class="alert-message" id="alertMessage"></div>
+                    <button class="btn btn-primary" onclick="closeCustomAlert()">确定</button>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', alertHtml);
+    }
+}
+
+function showCustomAlert(message) {
+    const alertElement = document.getElementById('customAlert');
+    const messageElement = document.getElementById('alertMessage');
+    
+    if (alertElement && messageElement) {
+        messageElement.textContent = message;
+        alertElement.style.display = 'flex';
+    } else {
+        alert(message);
+    }
+}
+
+function closeCustomAlert() {
+    const alertElement = document.getElementById('customAlert');
+    if (alertElement) {
+        alertElement.style.display = 'none';
+    }
 }
