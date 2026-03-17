@@ -1,5 +1,6 @@
 # EV-charging-app
-Electric Vehicle Charging Assistant - Project of the CUEB Charging Pile Group A simple web page written in front-end languages.
+Electric Vehicle Charging Assistant - Project of the CUEB Charging Pile Group
+A simple web page written in front-end languages.
 
 ##  有效的充电桩编号
 ### 默认充电桩列表：
