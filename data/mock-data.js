@@ -111,6 +111,15 @@ const currentChargingSession = {
 
 let allStations = [];
 
+function getRandomElements(array, count) {
+    if (array.length <= count) {
+        return array;
+    }
+    
+    const shuffled = [...array].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+}
+
 async function initStations() {
     console.log('initStations: 开始初始化充电桩数据');
     console.log('initStations: 当前 mockStations.length =', mockStations.length);
@@ -123,8 +132,31 @@ async function initStations() {
             
             if (allStations.length > 0) {
                 mockStations.length = 0;
-                mockStations.push(...allStations.slice(0, 50));
-                console.log('initStations: 已添加到 mockStations，数量:', mockStations.length);
+                
+                const stationsByDistrict = {};
+                allStations.forEach(station => {
+                    const district = station.districtCode;
+                    if (!stationsByDistrict[district]) {
+                        stationsByDistrict[district] = [];
+                    }
+                    stationsByDistrict[district].push(station);
+                });
+                
+                const districts = Object.keys(stationsByDistrict);
+                const stationsPerDistrict = Math.floor(50 / districts.length);
+                const remainingStations = 50 % districts.length;
+                
+                districts.forEach((district, index) => {
+                    const districtStations = stationsByDistrict[district];
+                    const count = index < remainingStations 
+                        ? stationsPerDistrict + 1 
+                        : stationsPerDistrict;
+                    
+                    const selectedStations = getRandomElements(districtStations, count);
+                    mockStations.push(...selectedStations);
+                });
+                
+                console.log('initStations: 已按区域均匀添加到 mockStations, 数量:', mockStations.length);
             } else {
                 console.log('initStations: CSV 数据为空');
             }
@@ -137,7 +169,7 @@ async function initStations() {
         console.log('initStations: allStations 已有数据，数量:', allStations.length);
     }
     
-    console.log('initStations: 返回 mockStations，数量:', mockStations.length);
+    console.log('initStations: 返回 mockStations, 数量:', mockStations.length);
     return mockStations;
 }
 
